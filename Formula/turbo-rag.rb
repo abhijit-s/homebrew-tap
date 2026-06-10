@@ -22,7 +22,7 @@ class TurboRag < Formula
   on_macos do
     on_arm do
       url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.2.0/turbo-rag-0.2.0-wheelhouse-macos-arm64.tar.gz"
-      sha256 "23878908864d73d337d3899beb42b07eb6ecb81b8a3a2e1ee293bf3b3f2f6add"
+      sha256 "045d0244e31344181b4cc9f9c5194b894b10249545c9623f05bf203955fa23e4"
     end
   end
 
@@ -32,16 +32,19 @@ class TurboRag < Formula
     venv_python = libexec/"bin/python"
     system Formula["python@3.13"].opt_bin/"python3.13", "-m", "venv", libexec
     system venv_python, "-m", "pip", "install", "--upgrade", "pip"
-    # `buildpath` is the wheelhouse/ dir itself — brew CD's into a tarball's
-    # single top-level directory automatically. Wheels live directly here.
+    # Tarball has two top-level dirs (wheelhouse/ + man/), so brew does
+    # NOT auto-CD; buildpath is the extraction root containing both.
     system venv_python, "-m", "pip", "install",
-           "--no-index", "--find-links=#{buildpath}",
+           "--no-index", "--find-links=#{buildpath}/wheelhouse",
            "turbo-rag-poc"
 
     # Explicit symlinks per the source repo's plan KTD.
     bin.install_symlink libexec/"bin/turbo-ragctl"
     bin.install_symlink libexec/"bin/turbo-rag-engine"
     bin.install_symlink libexec/"bin/turbo-rag-mcp"
+
+    # Install groff man pages from the tarball's man/man1/ dir.
+    man1.install Dir["#{buildpath}/man/man1/*.1"]
   end
 
   def caveats
@@ -59,9 +62,10 @@ class TurboRag < Formula
       The libexec venv keeps working (it uses absolute Cellar symlinks).
       To re-link later: brew link python@3.13
 
-      For man pages, clone the source repo and run
-        scripts/install-manpages.sh
-      (or `make manpages` if you've edited the CLIs).
+      Man pages are installed under $HOMEBREW_PREFIX/share/man/man1/ — try
+      `man turbo-ragctl`. For dev installs from a clone, run
+      `scripts/install-manpages.sh` (or `make manpages` if you've edited
+      the CLIs).
     EOS
   end
 
