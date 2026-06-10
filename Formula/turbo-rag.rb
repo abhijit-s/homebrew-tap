@@ -32,8 +32,10 @@ class TurboRag < Formula
     venv_python = libexec/"bin/python"
     system Formula["python@3.13"].opt_bin/"python3.13", "-m", "venv", libexec
     system venv_python, "-m", "pip", "install", "--upgrade", "pip"
+    # `buildpath` is the wheelhouse/ dir itself — brew CD's into a tarball's
+    # single top-level directory automatically. Wheels live directly here.
     system venv_python, "-m", "pip", "install",
-           "--no-index", "--find-links=#{buildpath}/wheelhouse",
+           "--no-index", "--find-links=#{buildpath}",
            "turbo-rag-poc"
 
     # Explicit symlinks per the source repo's plan KTD.
