@@ -1,7 +1,7 @@
 class TurboRag < Formula
   desc "Per-user semantic source-code index, wrapping turbovec"
   homepage "https://github.com/abhijit-s/turbo-rag"
-  version "0.3.0"
+  version "0.4.0"
   license "Apache-2.0"
 
   # launchd is macOS-only; refuse cleanly on Linuxbrew rather than
@@ -14,15 +14,15 @@ class TurboRag < Formula
   # symlinks, so your mise/uv-managed Python on $PATH isn't shadowed.
   depends_on "python@3.13"
 
-  # Pre-built wheelhouse (72 wheels: turbo-rag + every transitive dep).
+  # Pre-built wheelhouse (73 wheels: turbo-rag + every transitive dep).
   # Built locally on a clean Python 3.13 venv via
   # `pip wheel <source> --wheel-dir wheelhouse/`, then tarred and uploaded
   # as a Release attachment on THIS tap repo. See docs/releasing.md in
   # github.com/abhijit-s/turbo-rag for the build steps.
   on_macos do
     on_arm do
-      url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.3.0/turbo-rag-0.3.0-wheelhouse-macos-arm64.tar.gz"
-      sha256 "696c84d94f921236a114b33160e06bd51be89696e0010a9225b080a366e59811"
+      url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.4.0/turbo-rag-0.4.0-wheelhouse-macos-arm64.tar.gz"
+      sha256 "586a6071f526f753524376631e1ce89c8de75c2af2547d7a0f921b054ea938a7"
     end
   end
 
