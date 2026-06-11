@@ -33,6 +33,10 @@ class Fff < Formula
       bin.install "fff-engine"
       bin.install "fffctl"
     end
+
+    # bash + zsh + fish, generated from each binary's --completions flag
+    generate_completions_from_executable(bin/"fffctl", "--completions")
+    generate_completions_from_executable(bin/"fff-mcp", "--completions")
   end
 
   def caveats
@@ -73,5 +77,7 @@ class Fff < Formula
     assert_predicate bin/"fffctl", :executable?
     assert_match "fff-engine", shell_output("#{bin}/fff-engine --help 2>&1", 2)
     assert_match "Manage fff-engine daemons", shell_output("#{bin}/fffctl --help 2>&1")
+    assert_match "#compdef fffctl", shell_output("#{bin}/fffctl --completions zsh")
+    assert_match "_fff-mcp", shell_output("#{bin}/fff-mcp --completions zsh")
   end
 end
