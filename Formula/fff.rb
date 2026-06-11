@@ -33,6 +33,10 @@ class Fff < Formula
       bin.install "fff-engine"
       bin.install "fffctl"
     end
+
+    # Shell completions, generated from the installed binaries.
+    generate_completions_from_executable(bin/"fffctl", "--completions")
+    generate_completions_from_executable(bin/"fff-mcp", "--completions")
   end
 
   def caveats
@@ -53,6 +57,7 @@ class Fff < Formula
         fffctl list           # show all running daemons
         fffctl stop --all     # stop every daemon
         fffctl clean          # remove stale lockfiles / orphan sockets
+        fffctl restart        # stop --all + clean (run after upgrading fff)
 
       Configuration (optional): ~/.config/fff/config.toml
         [log]
