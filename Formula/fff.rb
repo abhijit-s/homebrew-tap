@@ -23,7 +23,9 @@ class Fff < Formula
   def install
     if build.head?
       ENV["CMAKE_ARGS"] = "-DUSE_SQLITE_CREDENTIAL_CACHING=OFF"
-      system "cargo", "build", "--release", "--no-default-features",
+      # Crate defaults give fff-mcp the pure-Rust `ripgrep` walker (no Zig),
+      # unified across the -p set so fff-core satisfies its ripgrep|zlob guard.
+      system "cargo", "build", "--release",
              "-p", "fff-engine", "-p", "fff-mcp", "-p", "fff-ctl"
       bin.install "target/release/fff-mcp"
       bin.install "target/release/fff-engine"
