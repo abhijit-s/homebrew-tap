@@ -9,7 +9,7 @@ class Fff < Formula
   on_macos do
     on_arm do
       url "https://github.com/abhijit-s/fff/releases/download/v0.17.2/fff-aarch64-apple-darwin.tar.gz"
-      sha256 "e65d491f7f71cbc56f5e6e84d07048b5eea62541bab0a6a18064386c9f8a3f8e"
+      sha256 "d3e6c6da3f06604322513dcc8842f2415880ab8e3d417f945ff2ba9b1f18a334"
     end
   end
 
