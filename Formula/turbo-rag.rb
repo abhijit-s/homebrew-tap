@@ -22,7 +22,7 @@ class TurboRag < Formula
     on_arm do
       url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.25.0/turbo-rag-0.25.0-bundle-macos-arm64.tar.gz"
       # sha256 is set by scripts/release/bump-formula.sh at release time.
-      sha256 "86280406c3ce3a127e5cf2da4a049c42c9a63596d2aad65a50034fac992b2d9e"
+      sha256 "00978dfc369ee926cdca562623a98140f215eaf3fdaa506c2dc6cca129545aad"
     end
   end
 
