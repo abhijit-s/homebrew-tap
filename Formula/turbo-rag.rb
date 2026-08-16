@@ -1,7 +1,7 @@
 class TurboRag < Formula
   desc "Per-user semantic source-code index, wrapping turbovec"
   homepage "https://github.com/abhijit-s/turbo-rag"
-  version "0.27.1"
+  version "0.27.2"
   license "Apache-2.0"
 
   # launchd is macOS-only; refuse cleanly on Linuxbrew rather than
@@ -20,9 +20,9 @@ class TurboRag < Formula
   # docs/releasing.md in github.com/abhijit-s/turbo-rag for the build steps.
   on_macos do
     on_arm do
-      url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.27.1/turbo-rag-0.27.1-bundle-macos-arm64.tar.gz"
+      url "https://github.com/abhijit-s/homebrew-tap/releases/download/turbo-rag-v0.27.2/turbo-rag-0.27.2-bundle-macos-arm64.tar.gz"
       # sha256 is set by scripts/release/bump-formula.sh at release time.
-      sha256 "f672b048692f7cf951165d23c63353b15ce3c060574b2840dedf99acc5b135e4"
+      sha256 "ee730a2bb3a9b22c7e44c9ec9e832d60914603b503ae219de575a3b7a9eadc6d"
     end
   end
 
