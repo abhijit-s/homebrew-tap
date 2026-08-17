@@ -1,15 +1,15 @@
 class Fff < Formula
   desc "Fast frecency-ranked file finder MCP server for AI code assistants"
   homepage "https://github.com/abhijit-s/fff"
-  version "0.18.0"
+  version "0.19.0"
   license "MIT"
 
   # Stable ships aarch64-apple-darwin only (built locally, ripgrep backend).
   # Intel/Linux users: use `--HEAD` (builds from source) until CI releases resume.
   on_macos do
     on_arm do
-      url "https://github.com/abhijit-s/fff/releases/download/v0.18.0/fff-aarch64-apple-darwin.tar.gz"
-      sha256 "505c9c5ac9c64fcce9621887a92df5f3ce8f390afa7046987e11a28d87ff6ce1"
+      url "https://github.com/abhijit-s/fff/releases/download/v0.19.0/fff-aarch64-apple-darwin.tar.gz"
+      sha256 "10f064303f34b45215339c2bfe7ce031fad1627de712fbfc82623b027398336f"
     end
   end
 
