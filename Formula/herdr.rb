@@ -1,7 +1,7 @@
 class Herdr < Formula
   desc "Terminal-based agent runtime for coding agents (abhijit-s fork)"
   homepage "https://github.com/abhijit-s/herdr"
-  version "0.8.3-abhi.1"
+  version "0.8.3"
   license "Apache-2.0"
 
   # Fork of herdrdev/herdr. See FORK.md in the repo for what diverges upstream.
@@ -9,23 +9,23 @@ class Herdr < Formula
   # source and needs the same Rust + Zig toolchain upstream requires.
   on_macos do
     on_arm do
-      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3-abhi.1/herdr-macos-aarch64"
-      sha256 "31e8fe6d00470d3bc339d12e0b1fb6323fe5efb3690cf5343e4cabacbf78c57b"
+      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3/herdr-macos-aarch64"
+      sha256 "8d04609fdda80cb993651fbda8237118d521fd7591da1372663fdc2392926216"
     end
     on_intel do
-      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3-abhi.1/herdr-macos-x86_64"
-      sha256 "4217820421595b1a3e24efd1170cc97244cba2cd554541ca0e0017b57f068e34"
+      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3/herdr-macos-x86_64"
+      sha256 "5ace90c80417c6dbcd915a6c12a5960626bfa63786b94d24eefab51405256c7e"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3-abhi.1/herdr-linux-aarch64"
-      sha256 "d0e375125605792be6c64c414b4529fb48e366f322223b3a3e333118953aa840"
+      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3/herdr-linux-aarch64"
+      sha256 "28d1c23036852c14bd8a2d17378c8c91eca94598368beb68a8ca42870cd1c5d1"
     end
     on_intel do
-      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3-abhi.1/herdr-linux-x86_64"
-      sha256 "64aac8985e2d3f0d2bf5c43e0f0e664db1eedd11b585644739ca2675e90867ce"
+      url "https://github.com/abhijit-s/herdr/releases/download/v0.8.3/herdr-linux-x86_64"
+      sha256 "81ef5fa44a3dc4f338594c5ee47eaed0bae9ad5288db9c42ebc3466d5801557f"
     end
   end
 
@@ -56,8 +56,10 @@ class Herdr < Formula
       installed, unlink it first:
         brew unlink herdr
 
-      Fork releases use a semver prerelease suffix so they sort below the
-      equivalent upstream version.
+      Fork releases reuse upstream's next patch number: herdr's own version
+      model reserves the -suffix form for its channel/build identity, so a
+      semver prerelease in Cargo.toml makes update checks and plugin gating
+      panic.
     EOS
   end
 
